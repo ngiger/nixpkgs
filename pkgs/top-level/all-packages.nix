@@ -25993,6 +25993,9 @@ in
 
   shc = callPackage ../tools/security/shc { };
 
+  signet-app = libsForQt5.callPackage ../tools/security/signet-app { };
+  signet-udev-rules = callPackage ../tools/security/signet-app/udev-rules.nix { };
+
   canon-cups-ufr2 = callPackage ../misc/cups/drivers/canon { };
 
   hll2390dw-cups = callPackage ../misc/cups/drivers/hll2390dw-cups { };

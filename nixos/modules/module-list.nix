@@ -60,6 +60,7 @@
   ./hardware/pcmcia.nix
   ./hardware/printers.nix
   ./hardware/raid/hpsa.nix
+  ./hardware/signet.nix
   ./hardware/steam-hardware.nix
   ./hardware/tuxedo-keyboard.nix
   ./hardware/usb-wwan.nix

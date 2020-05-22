@@ -5546,6 +5546,12 @@
     githubId = 1488603;
     name = "François Espinet";
   };
+  ngiger = {
+    email = "niklaus.giger@member.fsf.org";
+    github = "ngiger";
+    githubId = 265800;
+    name = "Niklaus Giger";
+  };
   nikitavoloboev = {
     email = "nikita.voloboev@gmail.com";
     github = "nikitavoloboev";
