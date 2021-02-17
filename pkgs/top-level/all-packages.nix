@@ -24168,6 +24168,8 @@ in
 
   pixelnuke = callPackage ../applications/graphics/pixelnuke { };
 
+  postrunner = callPackage ../applications/misc/postrunner { };
+
   slack = callPackage ../applications/networking/instant-messengers/slack { };
 
   slack-cli = callPackage ../tools/networking/slack-cli { };
