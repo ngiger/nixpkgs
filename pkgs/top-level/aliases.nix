@@ -1010,9 +1010,10 @@ mapAliases ({
     ffmpegthumbs filelight
     granatier gwenview
     k3b
-    kaddressbook kalzium kapptemplate kapman kate katomic
+    kaddressbook kalarm kalzium kapptemplate kapman kate katomic
     kblackbox kblocks kbounce
     kcachegrind kcalc kcharselect kcolorchooser
+    kdepim-runtime kdepim-addons
     kdenlive kdf kdialog kdiamond
     keditbookmarks
     kfind kfloppy
@@ -1021,7 +1022,7 @@ mapAliases ({
     kig kigo killbots kitinerary
     kleopatra klettres klines
     kmag kmail kmines kmix kmplot
-    knavalbattle knetwalk knights
+    knavalbattle knetwalk knights knotes
     kollision kolourpaint kompare konsole kontact korganizer
     kpkpass
     krdc kreversi krfb
@@ -1056,6 +1057,7 @@ mapAliases ({
     plasma-vault
     plasma-workspace plasma-workspace-wallpapers
     polkit-kde-agent powerdevil
+    print-manager
     qqc2-breeze-style
     sddm-kcm systemsettings
     xdg-desktop-portal-kde
