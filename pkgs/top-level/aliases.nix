@@ -1019,7 +1019,7 @@ mapAliases ({
     kig kigo killbots kitinerary
     kleopatra klettres klines
     kmag kmail kmines kmix kmplot
-    knavalbattle knetwalk knights
+    knavalbattle knetwalk knights knotes
     kollision kolourpaint kompare konsole kontact korganizer
     kpkpass
     krdc kreversi krfb
