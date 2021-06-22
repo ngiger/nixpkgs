@@ -2,18 +2,17 @@
 , zlib, jdk, glib, gtk, libXtst, gsettings-desktop-schemas, webkitgtk
 , makeWrapper, perl, ... }:
 
-{ name, src ? builtins.getAttr stdenv.hostPlatform.system sources, sources ? null, description }:
+{ pname, version, src ? builtins.getAttr stdenv.hostPlatform.system sources, sources ? null, description }:
 
 stdenv.mkDerivation rec {
-  inherit name src;
-
+  inherit pname version description src;
   desktopItem = makeDesktopItem {
     name = "Eclipse";
     exec = "eclipse";
     icon = "eclipse";
-    comment = "Integrated Development Environment";
+    comment = description;
     desktopName = "Eclipse IDE";
-    genericName = "Integrated Development Environment";
+    genericName = description;
     categories = "Development;";
   };
 

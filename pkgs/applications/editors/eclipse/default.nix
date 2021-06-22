@@ -1,7 +1,7 @@
 { lib, stdenv, fetchurl, makeDesktopItem, makeWrapper
 , freetype, fontconfig, libX11, libXrender, zlib
 , glib, gtk3, gtk2, libXtst, jdk, jdk8, gsettings-desktop-schemas
-, webkitgtk ? null  # for internal web browser
+, webkitgtk # for internal web browser
 , buildEnv, runCommand
 , callPackage
 }:
@@ -23,16 +23,18 @@ let
   gtk = gtk3;
 in rec {
 
+  version = "${platform_major}.${platform_minor}";
   buildEclipse = callPackage ./build-eclipse.nix {
     inherit stdenv makeDesktopItem freetype fontconfig libX11 libXrender zlib
             jdk glib gtk libXtst gsettings-desktop-schemas webkitgtk
-            makeWrapper;
+            makeWrapper  ;
   };
 
   ### Eclipse CPP
 
   eclipse-cpp = buildEclipse {
-    name = "eclipse-cpp-${platform_major}.${platform_minor}";
+    pname = "eclipse-cpp";
+    inherit version;
     description = "Eclipse IDE for C/C++ Developers";
     src =
       fetchurl {
@@ -44,7 +46,8 @@ in rec {
   ### Eclipse Modeling
 
   eclipse-modeling = buildEclipse {
-    name = "eclipse-modeling-${platform_major}.${platform_minor}";
+    pname = "eclipse-modeling";
+    inherit version;
     description = "Eclipse Modeling Tools";
     src =
       fetchurl {
@@ -56,11 +59,12 @@ in rec {
   ### Eclipse Platform
 
   eclipse-platform = buildEclipse {
-    name = "eclipse-platform-${platform_major}.${platform_minor}";
+    pname = "eclipse-platform";
+    inherit version;
     description = "Eclipse Platform ${year}-${month}";
     src =
       fetchurl {
-        url = "https://www.eclipse.org/downloads/download.php?r=1&nf=1&file=/eclipse/downloads/drops${platform_major}/R-${platform_major}.${platform_minor}-${timestamp}/eclipse-platform-${platform_major}.${platform_minor}-linux-gtk-x86_64.tar.gz";
+        url = "https://www.eclipse.org/downloads/download.php?r=1&nf=1&file=/eclipse/downloads/drops${platform_major}/R-${timestamp}/eclipse-platform-linux-gtk-x86_64.tar.gz";
         sha512 = "03v1ly7j9d9qnl3d9rl5a9kp483dz8i8v3cfnh55ksm9fk8iy2fzg6wq178ggnx2z5x9k88a4wk6n647yilh2hgc2l7926imkh2j1ly";
       };
   };
@@ -69,7 +73,8 @@ in rec {
 
   eclipse-scala-sdk =
     buildEclipse.override { jdk = jdk8; gtk = gtk2; } {
-      name = "eclipse-scala-sdk-4.7.0";
+      pname = "eclipse-scala-sdk-4.7.0";
+      inherit version;
       description = "Eclipse IDE for Scala Developers";
       src =
         fetchurl {
@@ -81,11 +86,12 @@ in rec {
   ### Eclipse SDK
 
   eclipse-sdk = buildEclipse {
-    name = "eclipse-sdk-${platform_major}.${platform_minor}";
+    pname = "eclipse-sdk";
+    inherit version;
     description = "Eclipse ${year}-${month} Classic";
     src =
       fetchurl {
-        url = "https://www.eclipse.org/downloads/download.php?r=1&nf=1&file=/eclipse/downloads/drops${platform_major}/R-${platform_major}.${platform_minor}-${timestamp}/eclipse-SDK-${platform_major}.${platform_minor}-linux-gtk-x86_64.tar.gz";
+        url = "https://www.eclipse.org/downloads/download.php?r=1&nf=1&file=/eclipse/downloads/drops${platform_major}/R-${timestamp}/eclipse-SDK-linux-gtk-x86_64.tar.gz";
         sha512 = "37m91my121pch12bwpwk5svfqkm7vl07wjx4fkhpy947v5kjf36hm6x0i45swdg7f0hk72y2qz5ka15ki5jv890qy5psj6z7ax9sys7";
       };
   };
@@ -93,7 +99,8 @@ in rec {
   ### Eclipse Java
 
   eclipse-java = buildEclipse {
-    name = "eclipse-java-${platform_major}.${platform_minor}";
+    pname = "eclipse-java";
+    inherit version;
     description = "Eclipse IDE for Java Developers";
     src =
       fetchurl {
@@ -105,7 +112,8 @@ in rec {
   ### Eclipse Java EE
 
   eclipse-jee = buildEclipse {
-    name = "eclipse-jee-${platform_major}.${platform_minor}";
+    pname = "eclipse-jee";
+    inherit version;
     description = "Eclipse IDE for Enterprise Java and Web Developers";
     src =
       fetchurl {
@@ -117,7 +125,8 @@ in rec {
   ### Eclipse Committers
 
   eclipse-committers = buildEclipse {
-    name = "eclipse-committers-${platform_major}.${platform_minor}";
+    pname = "eclipse-committers";
+    inherit version;
     description = "Eclipse IDE for Eclipse Committers and Eclipse Platform Plugin Developers";
     src =
       fetchurl {
@@ -129,7 +138,8 @@ in rec {
   ### Eclipse IDE for RCP and RAP Developers
 
   eclipse-rcp = buildEclipse {
-    name = "eclipse-rcp-${platform_major}.${platform_minor}";
+    pname = "eclipse-rcp";
+    inherit version;
     description = "Eclipse IDE for RCP and RAP Developers";
     src =
       fetchurl {
@@ -146,7 +156,7 @@ in rec {
     let
       # Gather up the desired plugins.
       pluginEnv = buildEnv {
-        name = "eclipse-plugins";
+        pname = "eclipse-plugins";
         paths =
           with lib;
             filter (x: x ? isEclipsePlugin) (closePropagation plugins);
