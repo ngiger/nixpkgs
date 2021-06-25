@@ -1001,14 +1001,14 @@ mapAliases ({
 
   inherit (plasma5Packages) breeze-icons oxygen-icons5;
   inherit (plasma5Packages)
-    akonadi akregator ark
+    akonadi akonadiconsole akregator ark
     bomber bovo
     dolphin dragon
     elisa
     ffmpegthumbs filelight
     granatier gwenview
     k3b
-    kaddressbook kalzium kapptemplate kapman kate katomic
+    kaddressbook kalarm kalarmcal kalzium kapptemplate kapman kate katomic
     kblackbox kblocks kbounce
     kcachegrind kcalc kcharselect kcolorchooser
     kdenlive kdf kdialog kdiamond
@@ -1020,9 +1020,9 @@ mapAliases ({
     kleopatra klettres klines
     kmag kmail kmines kmix kmplot
     knavalbattle knetwalk knights
-    kollision kolourpaint kompare konsole kontact korganizer
+    kollision kolourpaint kompare konsole kontact konqueror korganizer knotes
     kpkpass
-    krdc kreversi krfb
+    krdc kreversi krfb kruler
     kshisen ksquares ksystemlog
     kteatime ktimer ktouch kturtle
     kwalletmanager kwave
